@@ -37,9 +37,9 @@ npm-debug.log
 yarn-error.log
 
 # BUCK
-buck-out/
-\.buckd/
-*.keystore
+# buck-out/
+# \.buckd/
+# *.keystore
 
 # fastlane
 #
