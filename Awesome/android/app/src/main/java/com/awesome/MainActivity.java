@@ -1,4 +1,4 @@
-package com.awesome;
+package com.gaurav.messageapp;
 
 import com.facebook.react.ReactActivity;
 
