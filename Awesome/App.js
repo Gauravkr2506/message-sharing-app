@@ -1,3 +1,4 @@
+import { AdMobBanner } from "react-native-admob";
 import { data } from "./data";
 import React, { Component } from "react";
 import { StyleSheet, Text, View, FlatList, Share, TouchableOpacity } from "react-native";
@@ -18,14 +19,14 @@ export default class App extends Component {
 	render() {
 		return (
 			<View style={{ flex: 1 }}>
-				<View style={{ backgroundColor: "yellow", padding: 15 }}>
-					<Text style={{ fontSize: 16, textAlign: "center" }}>--Happy Republic Day 2019--</Text>
+				<View style={{ backgroundColor: "#ff8000", padding: 15 }}>
+					<Text style={{ fontSize: 22, textAlign: "center",color:"#fff" }}>🐷Happy Republic Day 2019🐷</Text>
 				</View>
-				<View style={{ flex: 10, backgroundColor: "red" }}>
+				<View style={{ flex: 10, backgroundColor: "#fff" }}>
 					<FlatList data={data} renderItem={this._renderItem} />
 				</View>
-				<View style={{ flex: 1, backgroundColor: "yellow" }}>
-					<Text>hi</Text>
+				<View style={{ flex: 1, backgroundColor: "#008000" }}>
+					<AdMobBanner adSize="smartBannerPortrait" adUnitID="ca-app-pub-9969212413329273/2210166532" />
 				</View>
 			</View>
 		);
@@ -42,7 +43,7 @@ class MyListItem extends Component {
 	}
 	render() {
 		return (
-			<TouchableOpacity onPress={this.share} style={{ padding: 20, margin: 20, backgroundColor: "#fff", borderRadius: 20 }}>
+			<TouchableOpacity onPress={this.share} style={{ padding: 20, margin: 20, backgroundColor: "#fff", borderRadius: 20,shadowColor:"#666",shadowOffset:{width:0,height:0},shadowRadius:20,shadowOpacity:0.5,elevation:3}}>
 				<Text style={{ fontSize: 15, lineHeight: 20 }}>{this.props.data.message}</Text>
 			</TouchableOpacity>
 		);

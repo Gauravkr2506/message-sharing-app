@@ -8,8 +8,10 @@ export const data = [
 	{
 		key: "1",
 		title: "Happy Republic Day!",
-		message: `Strength in our mind,Pride in our soul,Gratitude in our hearts.
-        Happy Republic Day to all!`
+		message: `आज़ादी की कभी शाम नही होने देंगे,
+		शहीदों की क़ुरबानी बदनाम नही दोंगे,
+		बची हो जो एक बूँद भी गरम लहू की,
+		तब तक भारत माता का आँचल नीलाम नही होने देंगे |`
 	},
 	{
 		key: "2",
@@ -20,8 +22,13 @@ export const data = [
 	{
 		key: "3",
 		title: "Happy Republic Day!",
-		message: `May we always choose freedom to live pecefully over everything. May we always make our country proud. 
-        Happy Republic Day!`
+		message: `⁣❕🐷❕❕❕🐷❕
+		🐷🐷🐷🐷🐷🐷🐷
+		🐷⚫🐷🐷🐷⚫🐷 
+		🐷🐷🐷⁣🐽🐷🐷🐷
+		🐷🐷🐷👅🐷🐷🐷
+		❕🐷🐷🐷🐷🐷❕
+		🐷❕❕❕❕❕🐷`
 	},
 	{
 		key: "4",
