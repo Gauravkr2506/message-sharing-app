@@ -1,3 +1,4 @@
+import SplashScreen from "react-native-splash-screen";
 import { AdMobBanner } from "react-native-admob";
 import { data } from "./data";
 import React, { Component } from "react";
@@ -7,6 +8,9 @@ export default class App extends Component {
 	constructor(props) {
 		super(props);
 		this.share = this.share.bind(this);
+	}
+	componentDidMount() {
+		SplashScreen.hide();
 	}
 	share(data) {
 		Share.share({
@@ -19,9 +23,9 @@ export default class App extends Component {
 	render() {
 		return (
 			<View style={{ flex: 1 }}>
-				<View style={{ backgroundColor: "#ff8000", padding: 15 }}>
-					<Text style={{ fontSize: 22, textAlign: "center",color:"#fff" }}>🐷Happy Republic Day 2019🐷</Text>
-				</View>
+				{/* <View style={{ backgroundColor: "#ff8000", padding: 15 }}>
+					<Text style={{ fontSize: 22, textAlign: "center", color: "#fff" }}>🐷Happy Republic Day 2019🐷</Text>
+				</View> */}
 				<View style={{ flex: 10, backgroundColor: "#fff" }}>
 					<FlatList data={data} renderItem={this._renderItem} />
 				</View>
@@ -43,7 +47,20 @@ class MyListItem extends Component {
 	}
 	render() {
 		return (
-			<TouchableOpacity onPress={this.share} style={{ padding: 20, margin: 20, backgroundColor: "#fff", borderRadius: 20,shadowColor:"#666",shadowOffset:{width:0,height:0},shadowRadius:20,shadowOpacity:0.5,elevation:3}}>
+			<TouchableOpacity
+				onPress={this.share}
+				style={{
+					padding: 20,
+					margin: 20,
+					backgroundColor: "#fff",
+					borderRadius: 20,
+					shadowColor: "#666",
+					shadowOffset: { width: 0, height: 0 },
+					shadowRadius: 20,
+					shadowOpacity: 0.5,
+					elevation: 3
+				}}
+			>
 				<Text style={{ fontSize: 15, lineHeight: 20 }}>{this.props.data.message}</Text>
 			</TouchableOpacity>
 		);
