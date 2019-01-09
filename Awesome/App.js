@@ -1,5 +1,5 @@
 import SplashScreen from "react-native-splash-screen";
-import { AdMobBanner } from "react-native-admob";
+import { AdMobBanner,AdMobInterstitial } from "react-native-admob";
 import { data } from "./data";
 import React, { Component } from "react";
 import { StyleSheet, Text, View, FlatList, Share, TouchableOpacity, ImageBackground } from "react-native";
@@ -52,7 +52,7 @@ export default class App extends Component {
 					<FlatList data={this.getData()} renderItem={this._renderItem} />
 				</View>
 				<View style={{ flex: 1, backgroundColor: "#008000" }}>
-					<AdMobBanner adSize="smartBannerPortrait" adUnitID="ca-app-pub-9969212413329273/2210166532" />
+					<AdMobBanner adSize="smartBannerPortrait" adUnitID="ca-app-pub-9969212413329273/2210166532" testDevices={[AdMobBanner.simulatorId]} />
 				</View>
 			</ImageBackground>
 		);
