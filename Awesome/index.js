@@ -1,7 +1,7 @@
 /** @format */
 
 import { AppRegistry } from "react-native";
-import { AdMobBanner,AdMobInterstitial } from "react-native-admob";
+import { AdMobRewarded,AdMobInterstitial } from "react-native-admob";
 import Application from "./App";
 import { name as appName } from "./app.json";
 import React, { Component } from "react";
@@ -45,7 +45,7 @@ class App extends Component {
 	componentDidMount(){
 		AdMobInterstitial.setAdUnitID('ca-app-pub-9969212413329273/3878471422');
 AdMobInterstitial.setTestDevices([AdMobInterstitial.simulatorId]);
-this.interval = setInterval(()=>{AdMobInterstitial.requestAd().then(() => AdMobInterstitial.showAd()).catch(err=>alert(err));},60000)
+this.interval = setInterval(()=>{AdMobInterstitial.requestAd().then(() => AdMobInterstitial.showAd()).catch(err=>console.log(err));},60000)
 
 	}
 	componentWillUnmount(){
@@ -53,7 +53,9 @@ this.interval = setInterval(()=>{AdMobInterstitial.requestAd().then(() => AdMobI
 	}
 	changeType(type) {
 		this.setState({ type: type });
-		AdMobInterstitial.requestAd().then(() => AdMobInterstitial.showAd()).catch(err=>alert(err));
+		AdMobRewarded.setAdUnitID('ca-app-pub-9969212413329273/2223931796');
+		AdMobRewarded.setTestDevices([AdMobRewarded.simulatorId]);
+		AdMobRewarded.requestAd().then(() => AdMobRewarded.showAd()).catch(err=>alert(err));
 	}
 	render() {
 		return (

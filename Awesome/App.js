@@ -2,7 +2,7 @@ import SplashScreen from "react-native-splash-screen";
 import { AdMobBanner,AdMobInterstitial } from "react-native-admob";
 import { data } from "./data";
 import React, { Component } from "react";
-import { StyleSheet, Text, View, FlatList, Share, TouchableOpacity, ImageBackground, Modal, TouchableHighlight, Alert, ScrollView, Image } from "react-native";
+import { StyleSheet, Text, View, FlatList, Share, TouchableOpacity, ImageBackground, Modal, TouchableHighlight, Alert, ScrollView,Linking , Image,Clipboard } from "react-native";
 
 export default class App extends Component {
 	constructor(props) {
@@ -10,6 +10,9 @@ export default class App extends Component {
 		this.share = this.share.bind(this);
 		this.getData = this.getData.bind(this);
 		this.state = { modalVisible: false, msg: {} };
+		this.clipboard = this.clipboard.bind(this);
+		this.whatsapp = this.whatsapp.bind(this);
+		this.shareTo = this.shareTo.bind(this);
 	}
 	componentDidMount() {
 		SplashScreen.hide();
@@ -45,6 +48,18 @@ export default class App extends Component {
 		}
 		return list_data;
 	}
+clipboard(){
+	Clipboard.setString(this.state.msg.message);
+}
+whatsapp(){
+	Linking.openURL(`whatsapp://send?text=${this.state.msg.message}`);
+}
+shareTo(data){
+	Share.share({
+			title: this.state.msg.title,
+			message: this.state.msg.message
+		});
+}
 
 	render() {
 		return (
@@ -78,22 +93,26 @@ export default class App extends Component {
 								Back
 							</Text>
 						</View>
-
-						<ScrollView contentContainerStyle={{ flex: 1 }}>
-							<Text style={{ fontSize: 16, textAlign: "center" }}>{this.state.msg.message}</Text>
+						<View style={{flex:9}}>
+						<ScrollView scrollEnabled={true} contentContainerStyle={{ flex: 1 }}>
+							<Text style={{ fontSize: 16 }}>{this.state.msg.message}</Text>
 						</ScrollView>
+						</View>
 
 						<View style={{ flex: 3, backgroundColor: "green" }}>
 							<View style={{ flex: 2, flexDirection: "row", justifyContent: "space-around", backgroundColor: "white" }}>
-								<TouchableHighlight style={{ width: 50, marginTop: 20, height: 50, backgroundColor: "red", justifyContent: "center", alignItems: "center", borderRadius: 25 }}>
+								<TouchableHighlight onPress={this.clipboard} style={{ width: 50, marginTop: 20, height: 50, backgroundColor: "red", justifyContent: "center", alignItems: "center", borderRadius: 25 }}>
 									<Image style={{ width: 20, height: 20 }} source={require("./img/copy.png")} />
 								</TouchableHighlight>
-								<TouchableHighlight style={{ width: 50, marginTop: 20, height: 50, backgroundColor: "red", justifyContent: "center", alignItems: "center", borderRadius: 25 }}>
+								<TouchableHighlight onPress={this.whatsapp} style={{ width: 50, marginTop: 20, height: 50, backgroundColor: "red", justifyContent: "center", alignItems: "center", borderRadius: 25 }}>
+									<Image style={{ width: 20, height: 20 }} source={require("./img/whatsapp.png")} />
+								</TouchableHighlight>
+								<TouchableHighlight onPress={this.share} style={{ width: 50, marginTop: 20, height: 50, backgroundColor: "red", justifyContent: "center", alignItems: "center", borderRadius: 25 }}>
 									<Image style={{ width: 20, height: 20 }} source={require("./img/share.png")} />
 								</TouchableHighlight>
 							</View>
 							<View style={{ height: 50, backgroundColor: "#333" }}>
-								<Text>adds</Text>
+							<AdMobBanner adSize="smartBannerPortrait" adUnitID="ca-app-pub-9969212413329273/6387248523" testDevices={[AdMobBanner.simulatorId]} />
 							</View>
 						</View>
 					</View>
