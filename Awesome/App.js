@@ -1,8 +1,24 @@
 import SplashScreen from "react-native-splash-screen";
-import { AdMobBanner,AdMobInterstitial } from "react-native-admob";
+import { AdMobBanner, AdMobInterstitial } from "react-native-admob";
 import { data } from "./data";
 import React, { Component } from "react";
-import { StyleSheet, Text, View, FlatList, Share, TouchableOpacity, ImageBackground, Modal, TouchableHighlight, Alert, ScrollView,Linking , Image,Clipboard } from "react-native";
+import {
+	StyleSheet,
+	Text,
+	View,
+	FlatList,
+	Share,
+	TouchableOpacity,
+	ImageBackground,
+	Modal,
+	TouchableHighlight,
+	Alert,
+	ScrollView,
+	Linking,
+	Image,
+	Clipboard,
+	TouchableNativeFeedback
+} from "react-native";
 
 export default class App extends Component {
 	constructor(props) {
@@ -48,18 +64,18 @@ export default class App extends Component {
 		}
 		return list_data;
 	}
-clipboard(){
-	Clipboard.setString(this.state.msg.message);
-}
-whatsapp(){
-	Linking.openURL(`whatsapp://send?text=${this.state.msg.message}`);
-}
-shareTo(data){
-	Share.share({
+	clipboard() {
+		Clipboard.setString(this.state.msg.message);
+	}
+	whatsapp() {
+		Linking.openURL(`whatsapp://send?text=${this.state.msg.message}`);
+	}
+	shareTo(data) {
+		Share.share({
 			title: this.state.msg.title,
 			message: this.state.msg.message
 		});
-}
+	}
 
 	render() {
 		return (
@@ -83,36 +99,76 @@ shareTo(data){
 					}}
 				>
 					<View style={{ flex: 1 }}>
-						<View style={{ height: 50, padding: 10 }}>
-							<Text
-								style={{ fontSize: 16 }}
+						<View style={{ height: 50, width: "100%", flexDirection: "row-reverse", padding: 10 }}>
+							<TouchableNativeFeedback
 								onPress={() => {
 									this.setState({ modalVisible: false });
 								}}
+								// style={{ height: 50, width: "100%", padding: 10, flexDirection: "row", justifyContent: "flex-end" }}
 							>
-								Back
-							</Text>
+								<Image style={{ width: 20, height: 20 }} source={require("./img/Icons/close.png")} />
+							</TouchableNativeFeedback>
 						</View>
-						<View style={{flex:9}}>
-						<ScrollView scrollEnabled={true} contentContainerStyle={{ flex: 1 }}>
-							<Text style={{ fontSize: 16 }}>{this.state.msg.message}</Text>
-						</ScrollView>
+						<View style={{ flex: 1 }}>
+							<View style={{ margin: 30, padding: 10, borderWidth: 4, borderColor: "#FF8448", borderRadius: 20 }}>
+								<ScrollView scrollEnabled={true}>
+									<View style={{ padding: 20 }}>
+										<Text style={{ fontSize: 16 }}>{this.state.msg.message}</Text>
+									</View>
+								</ScrollView>
+							</View>
 						</View>
 
-						<View style={{ flex: 3, backgroundColor: "green" }}>
-							<View style={{ flex: 2, flexDirection: "row", justifyContent: "space-around", backgroundColor: "white" }}>
-								<TouchableHighlight onPress={this.clipboard} style={{ width: 50, marginTop: 20, height: 50, backgroundColor: "red", justifyContent: "center", alignItems: "center", borderRadius: 25 }}>
+						<View style={{ height: 110, backgroundColor: "green" }}>
+							<View style={{ height: 60, flexDirection: "row", justifyContent: "space-around", alignItems: "center", backgroundColor: "#C4B96A" }}>
+								<TouchableHighlight
+									onPress={this.clipboard}
+									style={{
+										width: 40,
+										height: 40,
+										backgroundColor: "#ff8000",
+										justifyContent: "center",
+										alignItems: "center",
+										borderRadius: 25,
+										borderWidth: 2,
+										borderColor: "#998B56"
+									}}
+								>
 									<Image style={{ width: 20, height: 20 }} source={require("./img/copy.png")} />
 								</TouchableHighlight>
-								<TouchableHighlight onPress={this.whatsapp} style={{ width: 50, marginTop: 20, height: 50, backgroundColor: "red", justifyContent: "center", alignItems: "center", borderRadius: 25 }}>
+								<TouchableHighlight
+									onPress={this.whatsapp}
+									style={{
+										width: 40,
+										height: 40,
+										backgroundColor: "#fff",
+										justifyContent: "center",
+										alignItems: "center",
+										borderRadius: 25,
+										borderWidth: 2,
+										borderColor: "#998B56"
+									}}
+								>
 									<Image style={{ width: 20, height: 20 }} source={require("./img/whatsapp.png")} />
 								</TouchableHighlight>
-								<TouchableHighlight onPress={this.share} style={{ width: 50, marginTop: 20, height: 50, backgroundColor: "red", justifyContent: "center", alignItems: "center", borderRadius: 25 }}>
+								<TouchableHighlight
+									onPress={this.share}
+									style={{
+										width: 40,
+										height: 40,
+										backgroundColor: "#008000",
+										justifyContent: "center",
+										alignItems: "center",
+										borderRadius: 25,
+										borderWidth: 2,
+										borderColor: "#998B56"
+									}}
+								>
 									<Image style={{ width: 20, height: 20 }} source={require("./img/share.png")} />
 								</TouchableHighlight>
 							</View>
 							<View style={{ height: 50, backgroundColor: "#333" }}>
-							<AdMobBanner adSize="smartBannerPortrait" adUnitID="ca-app-pub-9969212413329273/6387248523" testDevices={[AdMobBanner.simulatorId]} />
+								<AdMobBanner adSize="smartBannerPortrait" adUnitID="ca-app-pub-9969212413329273/6387248523" testDevices={[AdMobBanner.simulatorId]} />
 							</View>
 						</View>
 					</View>

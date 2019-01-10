@@ -1,7 +1,7 @@
 /** @format */
 
 import { AppRegistry } from "react-native";
-import { AdMobRewarded,AdMobInterstitial } from "react-native-admob";
+import { AdMobRewarded, AdMobInterstitial } from "react-native-admob";
 import Application from "./App";
 import { name as appName } from "./app.json";
 import React, { Component } from "react";
@@ -21,13 +21,13 @@ class TopNavigation extends Component {
 					</MenuTrigger>
 					<MenuOptions>
 						<MenuOption value={1}>
-							<Text style={{color:'#000'}}>Hindi</Text>
+							<Text style={{ color: "#000" }}>Hindi</Text>
 						</MenuOption>
 						<MenuOption value={2}>
-							<Text style={{color:'#000'}}>English</Text>
+							<Text style={{ color: "#000" }}>English</Text>
 						</MenuOption>
 						<MenuOption value={3}>
-							<Text style={{color:'#000'}}>All</Text>
+							<Text style={{ color: "#000" }}>All</Text>
 						</MenuOption>
 					</MenuOptions>
 				</Menu>
@@ -40,22 +40,23 @@ class App extends Component {
 		super(props);
 		this.state = { type: 3 };
 		this.changeType = this.changeType.bind(this);
-		this.interval = ''
+		this.interval = "";
 	}
-	componentDidMount(){
-		AdMobInterstitial.setAdUnitID('ca-app-pub-9969212413329273/3878471422');
-AdMobInterstitial.setTestDevices([AdMobInterstitial.simulatorId]);
-this.interval = setInterval(()=>{AdMobInterstitial.requestAd().then(() => AdMobInterstitial.showAd()).catch(err=>console.log(err));},60000)
-
+	componentDidMount() {
+		AdMobInterstitial.setAdUnitID("ca-app-pub-9969212413329273/3878471422");
+		AdMobInterstitial.setTestDevices([AdMobInterstitial.simulatorId]);
+		// this.interval = setInterval(()=>{AdMobInterstitial.requestAd().then(() => AdMobInterstitial.showAd()).catch(err=>console.log(err));},60000)
 	}
-	componentWillUnmount(){
+	componentWillUnmount() {
 		this.interval.clearInterval();
 	}
 	changeType(type) {
 		this.setState({ type: type });
-		AdMobRewarded.setAdUnitID('ca-app-pub-9969212413329273/2223931796');
+		AdMobRewarded.setAdUnitID("ca-app-pub-9969212413329273/2223931796");
 		AdMobRewarded.setTestDevices([AdMobRewarded.simulatorId]);
-		AdMobRewarded.requestAd().then(() => AdMobRewarded.showAd()).catch(err=>alert(err));
+		AdMobRewarded.requestAd()
+			.then(() => AdMobRewarded.showAd())
+			.catch(err => alert(err));
 	}
 	render() {
 		return (
