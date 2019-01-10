@@ -44,8 +44,8 @@ class App extends Component {
 	}
 	componentDidMount() {
 		AdMobInterstitial.setAdUnitID("ca-app-pub-9969212413329273/3878471422");
-		AdMobInterstitial.setTestDevices([AdMobInterstitial.simulatorId]);
-		// this.interval = setInterval(()=>{AdMobInterstitial.requestAd().then(() => AdMobInterstitial.showAd()).catch(err=>console.log(err));},60000)
+		// AdMobInterstitial.setTestDevices([AdMobInterstitial.simulatorId]);
+		this.interval = setInterval(()=>{AdMobInterstitial.requestAd().then(() => AdMobInterstitial.showAd()).catch(err=>console.log(err));},120000)
 	}
 	componentWillUnmount() {
 		this.interval.clearInterval();
@@ -53,10 +53,10 @@ class App extends Component {
 	changeType(type) {
 		this.setState({ type: type });
 		AdMobRewarded.setAdUnitID("ca-app-pub-9969212413329273/2223931796");
-		AdMobRewarded.setTestDevices([AdMobRewarded.simulatorId]);
+		// AdMobRewarded.setTestDevices([AdMobRewarded.simulatorId]);
 		AdMobRewarded.requestAd()
 			.then(() => AdMobRewarded.showAd())
-			.catch(err => alert(err));
+			.catch(err => console.log(err));
 	}
 	render() {
 		return (

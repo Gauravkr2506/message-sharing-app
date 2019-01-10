@@ -87,7 +87,7 @@ export default class App extends Component {
 					<FlatList data={this.getData()} renderItem={this._renderItem} />
 				</View>
 				<View style={{ flex: 1, backgroundColor: "#008000" }}>
-					<AdMobBanner adSize="smartBannerPortrait" adUnitID="ca-app-pub-9969212413329273/2210166532" testDevices={[AdMobBanner.simulatorId]} />
+					<AdMobBanner adSize="smartBannerPortrait" adUnitID="ca-app-pub-9969212413329273/2210166532" />
 				</View>
 				<Modal
 					animationType="slide"
@@ -95,7 +95,7 @@ export default class App extends Component {
 					visible={this.state.modalVisible}
 					onRequestClose={() => {
 						this.setState({ modalVisible: false });
-						Alert.alert("Modal has been closed.");
+						// Alert.alert("Modal has been closed.");
 					}}
 				>
 					<View style={{ flex: 1 }}>
@@ -106,7 +106,7 @@ export default class App extends Component {
 								}}
 								// style={{ height: 50, width: "100%", padding: 10, flexDirection: "row", justifyContent: "flex-end" }}
 							>
-								<Image style={{ width: 20, height: 20 }} source={require("./img/Icons/close.png")} />
+								<Image style={{ width: 20, height: 20 }} source={require("./img/close.png")} />
 							</TouchableNativeFeedback>
 						</View>
 						<View style={{ flex: 1 }}>
@@ -152,7 +152,7 @@ export default class App extends Component {
 									<Image style={{ width: 20, height: 20 }} source={require("./img/whatsapp.png")} />
 								</TouchableHighlight>
 								<TouchableHighlight
-									onPress={this.share}
+									onPress={this.shareTo}
 									style={{
 										width: 40,
 										height: 40,
@@ -168,7 +168,7 @@ export default class App extends Component {
 								</TouchableHighlight>
 							</View>
 							<View style={{ height: 50, backgroundColor: "#333" }}>
-								<AdMobBanner adSize="smartBannerPortrait" adUnitID="ca-app-pub-9969212413329273/6387248523" testDevices={[AdMobBanner.simulatorId]} />
+								<AdMobBanner adSize="smartBannerPortrait" adUnitID="ca-app-pub-9969212413329273/6387248523" />
 							</View>
 						</View>
 					</View>
